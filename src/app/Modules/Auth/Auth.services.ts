@@ -9,7 +9,7 @@ import User from "./Auth.model";
 import Student from "../Student/Student.model";
 import mongoose from "mongoose";
 const LoginUser = async (payload: Pick<TUser, "email" | "password">) => {
-  console.log("from line 9 ", payload);
+  // console.log("from line 9 ", payload);
   // Checking If user exists or not
   const isUserExists = await User.findOne({ email: payload.email });
   if (!isUserExists) {
@@ -29,18 +29,18 @@ const LoginUser = async (payload: Pick<TUser, "email" | "password">) => {
     name: isUserExists?.name,
     role: isUserExists?.role,
   };
-  console.log(tokenPayload);
+  // console.log(tokenPayload);
   // Access and refresh  token generate
   const accessToken = jwt.sign(
     tokenPayload,
-    Config.JWT_ACCESS_SECRET as string,
+    "VGhpcy1pcy1hLWR1bW15LXJlZnJlc2gtc2VjcmV0",
     {
       expiresIn: "1d",
     }
   );
   const refreshToken = jwt.sign(
     tokenPayload,
-    Config.JWT_REFRESH_SECRET as string,
+    "VGhpcy1pcy1hLWR1bW15LXJlZnJlc2gtc2VjcmV0", // base64 for "This-is-a-dummy-refresh-secret"
     {
       expiresIn: "365d",
     }

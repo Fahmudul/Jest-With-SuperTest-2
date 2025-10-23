@@ -9,10 +9,10 @@ import Student from "../Student/Student.model";
 import { sendMail } from "../../Utils/sendMail";
 import { IPaymentPayload } from "./Payment.interface";
 import User from "../Auth/Auth.model";
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, {
-  apiVersion: "2024-04-10; custom_checkout_beta=v1" as any,
-});
-
+// const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, {
+//   apiVersion: "2024-04-10; custom_checkout_beta=v1" as any,
+// });
+let stripe: any;
 const CreateCheckOutSession = async (price: string) => {
   const paymentIntent = await stripe.paymentIntents.create({
     amount: parseInt(price) * 1000,
