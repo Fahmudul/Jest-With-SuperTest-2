@@ -5,7 +5,7 @@ const router = Router();
 
 const applicationRoutes = [
   {
-    path: "/auth",
+    path: "/book",
     route: BookRoutes,
   },
 ];

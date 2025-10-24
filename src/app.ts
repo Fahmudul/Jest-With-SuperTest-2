@@ -14,8 +14,16 @@ app.use(
   })
 );
 app.use("/api/v1", router);
-app.get("/", async (req: Request, res: Response) => {
-  res.send("Hello from Express");
-});
+
 app.use(globalErrorHandler);
+app.use(async (req: Request, res: Response, next: NextFunction) => {
+  res.status(500).json({
+    success: false,
+    message: "Route not found",
+    errorMessage: {
+      path: req.originalUrl,
+      message: "API Not Found",
+    },
+  });
+});
 export default app;
