@@ -9,4 +9,6 @@ module.exports = {
     ...tsJestTransformCfg,
   },
   forceExit: true,
+  verbose: true,
+  // testMatch: ["**/__tests__/**/*.unit.ts", "**/__tests__/**/*.integration.ts"],
 };

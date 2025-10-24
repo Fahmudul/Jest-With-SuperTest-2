@@ -24,7 +24,11 @@ const updateBook = async (
     pages: number;
   }>
 ): Promise<IBook | null> => {
-  if (!Types.ObjectId.isValid(id)) return null;
+  if (!Types.ObjectId.isValid(id)) throw new Error("Invalid book ID");
+
+  const bookExists = await Book.findById(id);
+
+  if (!bookExists) throw new Error("Book not found");
   return await Book.findByIdAndUpdate(id, payload, { new: true }).exec();
 };
 

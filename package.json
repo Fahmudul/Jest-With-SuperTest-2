@@ -9,7 +9,10 @@
     "build": "tsc",
     "lint": "node ./node_modules/eslint/bin/eslint.js . --fix",
     "lint:fix": "node ./node_modules/eslint/bin/eslint.js . --fix",
-    "test": "jest --detectOpenHandles --forceExit"
+    "test": "jest --forceExit --detectOpenHandles",
+    "test:unit": "jest --testPathPatterns=unit",
+    "test:integration": "jest --testPathPatterns=integration",
+    "test:watch": "jest --watch"
   },
   "keywords": [],
   "author": "",
